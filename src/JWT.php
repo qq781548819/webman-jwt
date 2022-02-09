@@ -12,6 +12,7 @@ use Nyuwa\Jwt\Exception\JWTException;
 use Nyuwa\Jwt\Exception\TokenValidException;
 use Nyuwa\Jwt\Util\JWTUtil;
 use Psr\Container\ContainerInterface;
+use support\Container;
 use support\Request;
 use Webman\App;
 
@@ -30,10 +31,9 @@ class JWT extends AbstractJWT
 
     public function __construct()
     {
-
         parent::__construct();
         $this->request = App::request();
-        $this->blackList = new BlackList;
+        $this->blackList = Container::get(BlackList::class);
     }
 
     /**
